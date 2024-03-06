@@ -1,0 +1,533 @@
+#### Removing trailing white space
+
+# press F1 and then type 'trim trailing whitespace'
+
+
+
+############ INITIAL SETUP ######
+
+# create a virtual environment:
+   > py -m venv <name-of-venv>
+# activate venv
+   > venv-name/scripts/activate
+# Install django
+# pip freeze > requirements.txt
+# create a projects:
+   > py admin  startproject core .
+# create an app:
+  > py manage.py startapp <name-of-app>
+# register the new app under installed apps in settings"
+  > 'name-of-app'
+# run server
+
+##############################################
+      Formating and linting
+#############################################
+
+# pip install black or use the black extension
+# pip install flake8
+# create .vscode folder in the root
+# within it, create a settings.json and write this:
+  > {
+    "editor.formatOnSave": true,
+    "python.formating.provider": "black",
+    "python.formatting.blackArgs": ["--line-length", "120"],
+  
+    "python.linting.enabled": true,
+    "python.linting.lintOnSave": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Args": ["--max-line-length", "120"],
+
+    "[python]": {
+      "editor.codeActionsOnSave": {
+        "source.organizeImports": "explicit"
+      }
+    },
+  // "python.pythonPath": "venv\\Scripts\\python.exe",
+ 
+  "files.associations": {
+    "**/*.html": "html",
+    "**/templates/**/*.html": "django-html",
+    "**/templates/**/*": "django-txt",
+    "**/requirements{/**,*}.{txt,in}": "pip-requirements"
+  },
+  }
+
+##############################################
+      CREATING DIFFERENT ENVIONMENTS
+#############################################
+
+# create settings folder in the core directory
+# create an init file to make it a model
+# move the settings.py in that settings folder but rename it base-settings
+# create two more files and name them local_settings and production_settings respectfully
+# import base_settings into local and production settings like so:
+   > from .base_settings import *
+# create a new random secret key through an interactive python shell like so:
+  > py manage.py shell
+  > from django.core.management.utils import get_random_secret_key
+  > print(get_random_secret_key())
+  > copy the secret key and paste it somewhere save
+  > leave the shell with exit()
+# create environmental variable to store secret key in the root folder:
+  > pip install python-dotenv
+  > create a .env file in the root 
+  > copy the new randoom secret key from the shell  and debug=true and paste it there
+  > remove any white space and quotations like so:
+    > SECRET_KEY =django-insecure-c@(q7am@&-feg*xp*@@l$*!s#4=*-65-^^ck6v#5(^0s10a^p1
+    > DEBUG=True
+# .env already added to the .gitignore
+# in the base_settings:
+  > from dotenv import load_dotenv
+  > import os
+  > load_dotenv()
+  > change the SECRET_KEY like so:
+    > SECRET_KEY = os.environ.get("SECRET_KEY")
+    > DEBUG = True
+    > ALLOWED_HOSTS = ["*"]
+# in the manage.py file:
+  > from core.settings import base_settings 
+  > in the main function, make sure that it runs local settings when debug=true and production settings when debug is false like so:
+  > def main():
+   
+    # check if Debug = True
+    if base_settings.DEBUG:
+        os.environ.setdefault(
+            "DJANGO_SETTINGS_MODULE",
+            "core.settings.local_settings",
+        )
+    else:
+        os.environ.setdefault(
+            "DJANGO_SETTINGS_MODULE", "core.settings.production_settings"
+        )
+# run server to verify that you are in local_settings
+
+##############################################
+      Testing setup
+#############################################
+
+# pip install pytest
+# in the core folder, create a folder called tests
+# in the test folder, create an init file
+# create a blog or your app name folder within to run the tests
+# within the blog folder, create a file called test_models.py
+# within the test folder, write the following:
+  > import pytest
+
+  pytestmark = pytest.mark.django_db
+
+
+  class TestPostModel:
+    # post_factory is from the registerd class PostFactory in the conftest.py
+    def test_str_return(self, post_factory):
+        post = post_factory(title="test-post")
+        assert post.__str__() == "test-post"
+
+
+# create an init file in the blog folder
+# in the root folder, create a pytest configuration file called pytest.ini and write this:
+  > [pytest]
+  > DJANGO_SETTINGS_MODULE = core.settings.local_settings
+  > python_files = test_*.py #naming all our test files test_ something
+# we will name all our test files to start with test_
+# pip install pytest-cov
+# run pytest --cov
+# a test result will come through with some of the missing tests
+# to get a full report, we need to get it in the html format like so:
+  > pytest --cov-report html --cov=./
+  > this will output a folder with many html files, including index.html
+  > open index.html 
+  > inspect the tests you are missing. Neglet the django files. Open the files that you wrote yourself.
+# create a file called factories.py in the tests folder to generate fake entries in the database
+# install factory-boy:
+  > pip install factory-boy
+  > write some items you need to test in factories file like so:
+    > import factory
+        from django.contrib.auth.models import User
+
+        from blog.models import Post
+
+
+        class UserFactory(factory.django.DjangoModelFactory):
+            class Meta:
+                model = User
+
+            password = "test"
+            username = "test"
+            is_superuser = True
+            is_staff = True
+
+
+        class PostFactory(factory.django.DjangoModelFactory):
+            class Meta:
+                model = Post
+
+            title = "x"
+            subtitle = "x"
+            slug = "x"
+            author = factory.SubFactory(UserFactory)
+            content = "x"
+            status = "published"
+
+            @factory.post_generation
+            def tags(self, create, extracted, **kwargs):
+                if not create:
+                    return
+
+                if extracted:
+                    self.tags.add(*extracted)
+# to finally test, then we need to pip install pytest-factoryboy
+# in the test folder, create conftest.py file which is gonna be seen by pytest before it runs
+# inside the conftest.py write this to use factoryboy to test:
+  > from pytest_factoryboy import register
+
+   from .factories import PostFactory
+
+      # register the class
+      register(PostFactory)
+
+# run pytest
+# it should tell how many passed or failed
+
+##############################################
+      Configure templates
+#############################################
+
+# create templates folder in the root folder
+# in the base_settings, under templates:
+  > "DIRS": [os.path.join(BASE_DIR, "templates")],
+
+##############################################
+      Configure statics
+#############################################
+
+# create static folder in the root folder, 
+# make some subfolders for css, js, and images and put any static files in there
+# in the base_settings, under statics:
+  > STATIC_URL = '/static/'
+  > MEDIA_URL ='/media/'
+  > STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+  > MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+  > STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+# in the core urls, also configure statics like so:
+  > from django.conf.urls.static import static
+  >  from django.conf import settings 
+# Outside the urls pattern:
+  > urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+  > urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+  > py manage.py collectstatics
+
+##############################################
+      Creating templates
+#############################################
+
+# in the templates folder, create a file called base.html
+# also within that, create a folder where your app's templates are going to reside, e.g : blog
+# within the blog folder, create the templates you need, e.g, index.html, post.html
+# in the base.html:
+  > load static at the very top of the file:
+    > {% load static%}
+    > do your emmet template
+    > write {% block content %} {% endblock %}
+    > above block content, include your navbar
+    > below your endblock, put your footer
+# in the index.html, at the very top, write: {% extends 'base.html' %}
+# then {% block content %} {% endblock %}, put your content between there like so:
+  > {% block content %}
+    <section>
+      <div>
+         <h1>Only love matters</h1>
+      </div>
+    </section>
+    {% endblock %}
+
+##############################################
+      Creating views
+#############################################
+
+# import models like this:
+  > from .models import Post
+# create index view like this:
+  > def home(request):
+      return render(request, "blog/index.html")
+
+##############################################
+      Configure URL's
+#############################################
+
+# create a url.py file in the app
+# in the core url's,:
+  >  import include next to the path
+  > add a path to include the app's urls like so:
+    > path("", include("app.urls"))
+# the app urls:
+  > import path:
+    > from django.urls import path
+  > import views like so:
+    > from . import views
+  > add a path like this:
+    > path("", views.index, name = "home"),
+
+##############################################
+      Collect Statics
+#############################################
+
+# collect statics to make sure that your css and images are in the static root
+# py manage.py collectstatic
+
+##############################################
+      Create models
+#############################################
+
+# in models.py:
+  > from django.contrib.auth.models import User
+
+
+# Create your models here.
+
+
+class Post(models.Model):
+    options = (
+        ("draft", "Draft"),
+        ("published", "Published"),
+    )
+    title = models.CharField(max_length=250)
+    subtitle = models.CharField(max_length=250)
+    slug = models.SlugField(max_length=250, unique=True)
+    author = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="post_author"
+    )
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True, editable=False)
+    updated_at = models.DateTimeField(auto_now=True, editable=False)
+    # feature_image = models.ImageField(upload_to="images/")
+    status = models.CharField(max_length=10, choices=options, default="draft")
+
+    class Meta:
+        ordering = ("-created_at",)  # decending order
+
+    class Meta:
+        verbose_name = 'category'
+        verbose_name_plural = 'categories'
+
+    def __str__(self):
+        return self.title
+
+##############################################
+      Register your  models in admin.py
+#############################################
+
+# in admin.py:
+  > from .models import Post
+  >admin.site.register(Post)
+
+##############################################
+     Migrations
+#############################################
+
+# py manage.py createsuperuser : admin
+# password: .......
+# py manage.py make migrations
+# py manage.py migrate
+# py manage.py runserver
+# go to admin panel, and  put your username and password there
+
+################################################################
+Create  Custom User model To log in instead of using Admin
+#################################################################
+
+# Create accounts app and register it in the base_settings
+# in the accounts app model file:
+  > from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+# create a class of MyAccountManager which takes in BaseUserManager
+  > create a function for normal user and the one for super_user
+# Create an Accounts models which takes in AbstractBaseUser
+# create the fields you need for that model like first_name, last_name, username, email,phone_number
+# define the required fields like dtae_joined and last_login with auto_now_add = True, is_admin, is_staff, is_active, is_admin default being False
+# Also the required fields when you login as follows:
+  > USERNAME_FIELD = 'email'
+  > REQUIRED_FILED = ['username', 'first_name', 'last_name']
+# tell the Acounts models that you are using the MyAccountManager by calling it with objects=MyAccountManager()
+# define a string representation which is going to return the self.email
+# define a function that has_perm(self,perm,obj=None) which is going to return self.is_admin
+# define a function that has_module_perms(self, add_label) which is always going to return True
+# telling settings that we are using custom user accounts:
+    > AUTH_USER_MODEL = 'accounts.Account'
+# Register your models in admin file
+# Delete an old sqlite DB  and any migrations file present
+# Make migrations and migrate
+
+################################################################
+Create  super_user
+#################################################################
+
+
+# email is admin12@gmail.com
+# anything else is admin
+# password is known to you
+
+################################################################
+Make password not readable from admin dashboard
+#################################################################
+
+# in the accounts'app , in the admin file:
+  > class AccountAdmin(UserAdmin):
+    list_display = ('email', 'first_name', 'last_name', 'username', 'last_login', 'date_joined', 'is_active')
+    list_display_links = ('email', 'first_name', 'last_name')
+    readonly_fields = ('last_login', 'date_joined')
+    ordering = ('-date_joined',)
+
+    filter_horizontal = ()
+    list_filter = ()
+    fieldsets = ()
+
+################################################################
+Pre-populating the slugfield
+#################################################################
+
+
+# In the models, slug must always be SlugField
+# in the category admin:
+# class CategoryAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('category_name',)}
+    list_display = ('category_name', 'slug')
+
+admin.site.register(Category, CategoryAdmin)
+
+
+################################################################
+create a store app
+#################################################################
+
+# In the store app models, create a Product model
+# Give it a field of category, with a ForiegnKey of Category, that you need to import from the Category app models
+# Specify that on_delete=models.CASCADE
+# create a ProductAdmin class which takes in admin.ModelAdmin to prepopulate the slugs and list_display, and list_display_links if you want
+# register the model in the admin file, both imported and the one for prepopulating the slug
+# make migrations and migrate
+
+####### git commit #####
+#### git commit -m 'created a Product model in the sore app models file, created a ProductAdmin class in the admin file to preporpulate the slug and for list_display, registered both models'
+
+
+################################################################
+Adding Products and Category in the Admin Panel
+#################################################################
+
+# Add products and categories after migrations
+
+################################################################
+Displaying Products in Home Page
+#################################################################
+
+# got to the core views.py
+# under the home function, make a variable called products to querry the Product model and filter by is_available
+# got to store templates, go to the home.html and dynamically code the products using the for loop
+
+
+################################################################
+Setting Up the Store Page
+#################################################################
+
+# include store the urls in the core settings urls
+# Go to the store urls and include the store path after importing views, also let it go to home first('')
+# make the same function as the home function for store in the store views
+# Dynanically call the products in the store.html with the for loop
+# add product_count in the function as well as pass it in the context
+# go to the store template and dynamically change it to {{product_count}}, no need to loop here 
+
+################################################################
+Displaying products by category
+#################################################################
+
+# we need a user when they click the category, it matches with the slug
+# in the store.urls file:
+  > path('<slug: category_slug/>', views.store, name='products_by_category'),
+# got to the store view, store function, accept the slug as well with request by saying : category_slug=None
+
+################################################################
+Context processor
+#################################################################
+
+# It will help us list all the products in a certain category when clicking on a category
+# helps diplsy categories and their children in the navbar
+# Go to category app and create context_processors.py
+# Tell base_settings that you are using context_processors like so :
+  > 'category.context_processors.menu_links',
+# go to the navbar and :
+  >  {% for category  in links %}
+              <a class="dropdown-item" href="{{category.get_url}}"
+                >{{category.category_name}}
+              </a>
+      {% endfor %}
+# links is from the context_processors and category_name is from the model, category.get_url is from the function
+# for the links to actually go somewhere, we need to get category slug or url by creating a get_url function in the models like so:
+      > def get_url(self):
+        return reverse('products_by_category', args=[self.slug])
+# products_by_category is from the path pf category_slug and where name is "products_by_category" in the store urls.py file
+# the self.slug, the slug from the category slug field
+# go to store.html and do the same thing under categories
+
+
+################################################################
+single product page and view
+#################################################################
+
+# in the store urls, make another path which is going to take the product_slug
+# in the store views, create a product_detail function which is gonna take in category_slug and product_slug
+# we need to access slug by category, the category will be in the store model and the slug will be in the category model
+# go to product-detail.html and get the detailed product dynamically
+
+################################################################
+get url for product
+#################################################################
+
+# if you click on the title of the product, you should go to single product details
+# go to the store model and create get url function with the product_detail path 
+# go to the home.html, under the for loop, replace the href with product.get_url, although it did not work, and i don't why
+
+################################################################
+errors to come back to
+#################################################################
+# errors about the redirect now fixed....
+# errors with redirect/urls cannot be found from home.html and navbar.html:
+  > when i click on the title or the image , i dont get a redirect to the detailed-page,
+  > when i click on the store page from the home page, i dont get redirected to the store page
+
+
+################################################################
+product out of stock
+#################################################################
+
+# Go to product-detail, before add to cart button:
+  > {% if sigle_product.stock <=0 %}
+	   <h5>Sorry, this product is out of stock!</h5>
+	{% else %}
+	   <a href="./product-detail.html" class="btn  btn-primary"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i></a>
+	{% endif %}
+
+
+################################################################
+cart app
+#################################################################
+
+# Create a carts app and register it, it must be plural
+# configure the core urls to include the carts urls
+# configure the carts urls to include the views
+# Create model called Cart with card_id and date_created fields, and register it.
+# Create another model called cartitem, it has foreignkeys of Cart and Product and accounts
+# make migrations and migrate
+
+################################################################
+Add to cart functionality without logging in and session keys
+#################################################################
+
+# when i click on add to cart button, it should take me to the cart page and also add the particular item into the cart
+# We are going to use session keys as cart-id
+# we need an add to cart function so that when we click the button to add to cart, it will work
+# go to views.py of cart app and make add-to-cart function
+# but first we need to make another function to get the cart-id from the session-id, it has to have underscore infront of the the name to indicate that its been used internally
+# def _get_cart_id, if no cart_id, we create one
+# the product when in the cart becomes the cart item, so we make try and except to combine product and cart to make cart-item
+# we also want the cart-item to be incremented by one 
+
