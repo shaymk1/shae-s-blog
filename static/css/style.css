@@ -38,8 +38,10 @@ p {
 
 /* header */
 header{
-    min-height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(../images/coding-1.jpg) center/cover no-repeat fixed;
+    /* min-height: 100vh;
+    center/cover no-repeat fixed */
+    /* background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(../images/coding-1.jpg) no-repeat; */
+    background: url('{% static "image/containers.jpg" %}') no-repeat center center fixed; 
     display: flex;
     flex-direction: column;
     justify-content: stretch;
@@ -171,6 +173,12 @@ form {
     }
 }
 /* end form */
+
+/* hero section */
+.hero-background-image{
+    background-image: url('{% static "images/coding-1.jpg" %}');
+    background-repeat: no-repeat;
+}
 
 /* featured */
 .section--header{

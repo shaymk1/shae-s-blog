@@ -1,31 +1,6 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Bloggies</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Boxicon awesome icon -->
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="css/style.css">
-    
-  </head>
-  <body>
-
-    <!-- header -->
-    
-    <nav class = "navbar">
-        <div class = "container">
-          <a href = "index.html" class = "navbar-brand">Academy.Omen</a>
-          <div class = "navbar-nav">
-            <a href = "index.html">home</a>
-            <a href = "articles.html">articles</a>
-            <a href = "">about</a>
-          </div>
-        </div>
-    </nav>
-    
-    <!-- end of header -->
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
 
     <div class = "container">
         <div class = "title">
@@ -62,18 +37,4 @@
         </div>
     </div>
 
-    <!-- footer -->
-    <footer>
-      <div class = "social-links">
-        <a href = "#"><i class='bx bxl-facebook'></i></a>
-        <a href = "#"><i class='bx bxl-twitter'></i></a>
-        <a href = "#"><i class='bx bxl-instagram'></i></a>
-        <a href = "#"><i class='bx bxl-github'></i></a>
-      </div>
-      <span>Academy.Omen Bloggies</span>
-    </footer>
-    <!-- end of footer -->
-    
-    
-  </body>
-</html>
+    {% endblock %}
