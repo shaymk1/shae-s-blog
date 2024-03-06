@@ -1,0 +1,294 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+
+<!-- Hero Section -->
+<div class="bg-dark" >
+  <div class="container">
+      <div class="row align-items-center no-gutters m-4" >
+          <div class="col-xl-5 col-lg-6 col-md-12">
+              <div class="py-5 py-lg-0">
+                  <h1 class="text-white display-4 fw-bold">Welcome to My Blog
+                  </h1>
+                  <p class="text-white-50 mb-4 lead">
+                      Where i share both my coding journey and my love for Cybersecurity and Python. 
+                  </p>
+                  <a href="pages/course-filter-list.html" class="btn btn-light">Articles</a>
+                  <a href="pages/sign-in.html" class="btn btn-secondary">About Me</a>
+              </div>
+          </div>
+          <div class=" col-xl-7 col-lg-6 col-md-12 text-lg-right text-center "  style="margin-top:2rem;margin-bottom:2rem;">
+              <img src="{% static 'images/me-png-f2.png' %}" alt="my pic" class="img-fluid" style="border-radius:50%;border:5px solid white; height:400px; width:400px;padding-top;1rem;">
+          </div>
+      </div>
+  </div>
+ </div>
+
+ {% comment %} blogs {% endcomment %}
+
+{% comment %} <div class="bg-dark"> {% endcomment %}
+  <div class="container"> 
+    <!-- Card Dark 1 -->
+    <h1 class="text-center fw-bold m-4">All Articles</h1>
+    <div class="row row-cols-1 row-cols-md-3 m-4">
+      <div class="col mb-4">
+        <!-- Card-1 -->
+        <div class="card">
+    
+          <!--Card image-->
+          <div class="view overlay">
+            <img class="card-img-top" src="{% static "images/articles/blog-1.png" %}"
+              alt="Card image cap">
+            <a href="#!">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+    
+          <!--Card content-->
+          <div class="card-body">
+    
+            <!--Title-->
+            <h4 class="card-title">Card title</h4>
+            <!--Text-->
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+              card's content.</p>
+            <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+            <button type="button" class="btn btn-dark">Read more</button>
+    
+          </div>
+    
+        </div>
+        <!-- Card -->
+      </div>
+
+      <div class="col mb-4">
+        <!-- Card-2 -->
+        <div class="card">
+    
+          <!--Card image-->
+          <div class="view overlay">
+            <img class="card-img-top" src="{% static "images/articles/blog-2.png" %}"
+              alt="Card image cap">
+            <a href="#!">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+    
+          <!--Card content-->
+          <div class="card-body">
+    
+            <!--Title-->
+            <h4 class="card-title">Card title</h4>
+            <!--Text-->
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+              card's content.</p>
+            <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+            <button type="button" class="btn btn-dark">Read more</button>
+    
+          </div>
+    
+        </div>
+        <!-- Card -->
+      </div>
+
+      <div class="col mb-4">
+        <!-- Card-3 -->
+        <div class="card">
+    
+          <!--Card image-->
+          <div class="view overlay">
+            <img class="card-img-top" src="{% static "images/articles/blog-3.png" %}"
+              alt="Card image cap">
+            <a href="#!">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+    
+          <!--Card content-->
+          <div class="card-body">
+    
+            <!--Title-->
+            <h4 class="card-title">Card title</h4>
+            <!--Text-->
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+              card's content.</p>
+            <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+            <button type="button" class="btn btn-dark">Read more</button>
+    
+          </div>
+    
+        </div>
+        <!-- Card -->
+      </div>
+
+
+      <div class="col mb-4">
+        <!-- Card-4 -->
+        <div class="card">
+    
+          <!--Card image-->
+          <div class="view overlay">
+            <img class="card-img-top" src="{% static "images/articles/blog-4.png" %}"
+              alt="Card image cap">
+            <a href="#!">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+    
+          <!--Card content-->
+          <div class="card-body">
+    
+            <!--Title-->
+            <h4 class="card-title">Card title</h4>
+            <!--Text-->
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+              card's content.</p>
+            <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+            <button type="button" class="btn btn-dark">Read more</button>
+    
+          </div>
+    
+        </div>
+        <!-- Card -->
+      </div>
+      <div class="col mb-4">
+        <!-- Card-5 -->
+        <div class="card">
+    
+          <!--Card image-->
+          <div class="view overlay">
+            <img class="card-img-top" src="{% static "images/articles/blog-5.png" %}"
+              alt="Card image cap">
+            <a href="#!">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+    
+          <!--Card content-->
+          <div class="card-body">
+    
+            <!--Title-->
+            <h4 class="card-title">Card title</h4>
+            <!--Text-->
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+              card's content.</p>
+            <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+            <button type="button" class="btn btn-dark">Read more</button>
+    
+          </div>
+    
+        </div>
+        <!-- Card -->
+      </div>
+
+
+      <div class="col mb-4">
+        <!-- Card-6 -->
+        <div class="card">
+    
+          <!--Card image-->
+          <div class="view overlay">
+            <img class="card-img-top" src="{% static "images/articles/blog-6.png" %}"
+              alt="Card image cap">
+            <a href="#!">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+    
+          <!--Card content-->
+          <div class="card-body">
+    
+            <!--Title-->
+            <h4 class="card-title">Card title</h4>
+            <!--Text-->
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+              card's content.</p>
+            <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+            <button type="button" class="btn btn-dark">Read more</button>
+    
+          </div>
+    
+        </div>
+        <!-- Card -->
+      </div>
+    </div>
+
+  </div>
+
+  </div>
+ </div> 
+
+ {% comment %} featured article{% endcomment %}
+<div class="bg-dark"> 
+  <div class="container"> 
+    
+
+   </div>
+</div> 
+    
+
+{% comment %} 
+ <section class="px-5 py-6 py-xxl-10 hcf-bp-center hcf-bs-cover hcf-overlay hcf-transform" style="background-image: url('{% static 'images/coding-1.jpg' %}');" > 
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-12 col-md-11 col-lg-9 col-xl-7 col-xxl-6 text-center text-white">
+        <h1 class="display-3 fw-bold mb-3">Art of Design</h1>
+        <p class="lead mb-5">Powerful, extensible, and feature-packed frontend toolkit. Build and customize with Sass, utilize prebuilt grid system and components, and bring projects to life with powerful JavaScript plugins.</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <button type="button" class="btn btn-light btn-lg px-4 gap-3">Free Consultation</button>
+          <button type="button" class="btn btn-outline-light btn-lg px-4">Buy Credits</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> {% endcomment %}
+
+
+
+    <!-- featured -->
+    {% comment %} <section class = "featured" id = "featured">
+        <div class = "container">
+          <div class = "title">
+            <h2>Featured articles</h2>
+          </div>
+  
+          <div class = "featured-content">
+            <!-- item -->
+            <div class = "featured-item">
+              <div class = "featured-img">
+                <img src = "{% static 'images/sample.jpg' %}" alt = "">
+                <span><i class='bx bx-calendar-star'></i> June 21</span>
+                <span>Art & Design</span>
+              </div>
+              <div class = "featured-title">
+                <a href = "#">make an awesome art portfolio for college or university</a>
+              </div>
+            </div>
+            <!-- end of item -->  
+          </div>
+        </div>
+      </section> {% endcomment %}
+      <!-- end of featured -->
+  
+      <!-- about -->
+      <section class = "about" id = "about">
+        <div class = "container">
+          <div class = "about-content">
+            <div>
+              <img src = "{% static 'images/about.jpg' %}" alt = "">
+            </div>
+            <div class = "about-text">
+              <div class = "title">
+                <h2>Catherine Doe</h2>
+                <p>art & design is my passion</p>
+              </div>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id totam voluptatem saepe eius ipsum nam provident sapiente, natus et vel eligendi laboriosam odit eos temporibus impedit veritatis ut, illo deserunt illum voluptate quis beatae quod. Necessitatibus provident dicta consectetur labore!</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam corrupti natus, eos quia recusandae voluptatem veniam modi officiis minima provident rem sint porro fuga quos tempora ea suscipit vero velit sed laudantium eaque necessitatibus maxime!</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+{% endblock content %}

@@ -1,0 +1,71 @@
+{% load static %}
+{% block content %}
+  <!-- header -->
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#"><img src="{% static "images/logo-vertical.svg" %}" alt="my-logo" style="width:5rem; height: 5rem;" ></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">Articles</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+
+     
+        
+     
+          
+      
+        
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+</header>
+
+  {% comment %} <header>
+    <nav class = "navbar">
+      <div class = "container">
+        <a href = "index.html" class = "navbar-brand">
+            <img src="{% static "images/logo-white.svg" %}" alt="my-logo" style="width:5rem; height: 5rem;" >
+        </a>
+        <div class = "navbar-nav">
+          <a href="">
+            <ion-icon name="search" style="color:white;font-size:2rem;"></ion-icon>
+          </a>
+          <a href = "index.html">home</a>
+          <a href = "articles.html">articles</a>
+          <a href = "">about</a>
+          
+          
+        </div>
+      </div>
+    </nav>
+    <div class = "banner">
+      <div class = "container">
+        <h1 class = "banner-title">
+          <span>Shae's.</span> Blog
+        </h1>
+        <p>eI am stillness!</p>
+      </div>
+    </div>
+  </header> {% endcomment %}
+  <!-- end of header -->
+  
+  <!-- end of header -->
+  
+{% endblock content %}

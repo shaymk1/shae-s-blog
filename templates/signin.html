@@ -23,11 +23,82 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 
-<body>
+<body class="fixed-position">
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
     </div>
+
+    <!-- Sign In Section Begin -->
+    <div class="signin">
+        <div class="signin__warp">
+            <div class="signin__content">
+                <div class="signin__logo">
+                    <a href="#"><img src="img/siign-in-logo.png" alt=""></a>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore dolore
+                    magna aliqua viverra.</p>
+                <div class="signin__form">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab" aria-selected="false">
+                                Sign up
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab" aria-selected="false">
+                                Sign in
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                            <div class="signin__form__text">
+                                <p>with your social network :</p>
+                                <div class="signin__form__signup__social">
+                                    <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                                    <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                                    <a href="#" class="google"><i class="fa fa-google"></i></a>
+                                </div>
+                                <div class="divide">or</div>
+                                <form action="#">
+                                    <input type="text" placeholder="User Name*">
+                                    <input type="text" placeholder="Password">
+                                    <input type="text" placeholder="Confirm Password">
+                                    <input type="text" placeholder="Email Address">
+                                    <input type="text" placeholder="Full Name">
+                                    <label for="sign-agree-check">
+                                        I agree to the terms & conditions
+                                        <input type="checkbox" id="sign-agree-check">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <button type="submit" class="site-btn">Register Now</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tabs-2" role="tabpanel">
+                            <div class="signin__form__text">
+                                <p>with your social network :</p>
+                                <div class="signin__form__signup__social">
+                                    <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                                    <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                                    <a href="#" class="google"><i class="fa fa-google"></i></a>
+                                </div>
+                                <div class="divide">or</div>
+                                <form action="#">
+                                    <input type="text" placeholder="User Name*">
+                                    <input type="text" placeholder="Password">
+                                    <button type="submit" class="site-btn">Sign In</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sign In Section End -->
 
     <!-- Humberger Begin -->
     <div class="humberger__menu__overlay"></div>
@@ -41,16 +112,7 @@
                 <li><a href="#">Recipes</a></li>
                 <li><a href="#">Dinner</a></li>
                 <li><a href="#">Desserts</a></li>
-                <li class="dropdown"><a href="#">Pages</a>
-                    <ul class="dropdown__menu">
-                        <li><a href="./categories-grid.html">Categories Grid</a></li>
-                        <li><a href="./categories-list.html">Categories List</a></li>
-                        <li><a href="./single-post.html">Single Post</a></li>
-                        <li><a href="./signin.html">Sign In</a></li>
-                        <li><a href="./404.html">404</a></li>
-                        <li><a href="./typography.html">Typography</a></li>
-                    </ul>
-                </li>
+                <li><a href="#">Vegan</a></li>
                 <li><a href="./about.html">About</a></li>
                 <li><a href="./contact.html">Contact</a></li>
             </ul>
@@ -103,7 +165,7 @@
                     <div class="col-lg-8 col-md-10 order-md-2 order-3">
                         <nav class="header__menu">
                             <ul>
-                                <li class="active"><a href="./index.html">Home</a></li>
+                                <li><a href="./index.html">Home</a></li>
                                 <li><a href="#">Recipes</a>
                                     <div class="header__megamenu__wrapper">
                                         <div class="header__megamenu">
@@ -162,16 +224,7 @@
                                 </li>
                                 <li><a href="#">Dinner</a></li>
                                 <li><a href="#">Desserts</a></li>
-                                <li class="dropdown"><a href="#">Pages</a>
-                                    <ul class="dropdown__menu">
-                                        <li><a href="./categories-grid.html">Categories Grid</a></li>
-                                        <li><a href="./categories-list.html">Categories List</a></li>
-                                        <li><a href="./single-post.html">Single Post</a></li>
-                                        <li><a href="./signin.html">Sign In</a></li>
-                                        <li><a href="./404.html">404</a></li>
-                                        <li><a href="./typography.html">Typography</a></li>
-                                    </ul>
-                                </li>
+                                <li><a href="#">Vegan</a></li>
                                 <li><a href="./about.html">About</a></li>
                                 <li><a href="./contact.html">Contact</a></li>
                             </ul>
@@ -189,7 +242,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3">
                     <div class="header__btn">
-                        <a href="./signin.html" class="primary-btn">Subscribe</a>
+                        <a href="#" class="primary-btn">Subscribe</a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
@@ -224,7 +277,7 @@
                                     <div class="hero__inside__item--meta">
                                         <span>08</span>
                                         <p>Aug</p>
-                                    </div>
+                                    </div>s-
                                     <div class="hero__inside__item--text">
                                         <ul class="label">
                                             <li>Vegan</li>
@@ -241,7 +294,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6  p-0">
+                        <div class="col-lg-3 p-0">
                             <div class="hero__inside__item hero__inside__item--small set-bg"
                                 data-setbg="img/hero/hero-2.jpg">
                                 <div class="hero__inside__item__text">
@@ -275,7 +328,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6  p-0">
+                        <div class="col-lg-3 p-0">
                             <div class="hero__inside__item set-bg" data-setbg="img/hero/hero-4.jpg">
                                 <div class="hero__inside__item__text">
                                     <div class="hero__inside__item--meta">
@@ -322,7 +375,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6 p-0">
+                        <div class="col-lg-3 p-0">
                             <div class="hero__inside__item hero__inside__item--small set-bg"
                                 data-setbg="img/hero/hero-3.jpg">
                                 <div class="hero__inside__item__text">
@@ -356,7 +409,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6 p-0">
+                        <div class="col-lg-3 p-0">
                             <div class="hero__inside__item set-bg" data-setbg="img/hero/hero-4.jpg">
                                 <div class="hero__inside__item__text">
                                     <div class="hero__inside__item--meta">
@@ -457,7 +510,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="col-lg-6 col-md-6">
                                 <div class="categories__post__item">
                                     <div class="categories__post__item__pic small__item set-bg"
                                         data-setbg="img/categories/categories-post/cp-2.jpg">
@@ -546,7 +599,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="col-lg-6 col-md-6">
                                 <div class="categories__post__item">
                                     <div class="categories__post__item__pic smaller__large set-bg"
                                         data-setbg="img/categories/categories-post/cp-3.jpg">
@@ -783,30 +836,25 @@
             </div>
         </div>
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="footer__text">
-                        <div class="footer__logo">
-                            <a href="#"><img src="img/logo.png" alt=""></a>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            ut<br /> labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus
-                            commodo viverra<br /> maecenas accumsan lacus vel facilisis. </p>
-                        <div class="footer__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-youtube-play"></i></a>
-                            <a href="#"><i class="fa fa-envelope-o"></i></a>
-                        </div>
-                    </div>
-                    <div class="footer__copyright">
-                        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                    </div>
+            <div class="footer__text">
+                <div class="footer__logo">
+                    <a href="#"><img src="img/logo.png" alt=""></a>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut<br />
+                    labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra<br />
+                    maecenas accumsan lacus vel facilisis. </p>
+                <div class="footer__social">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-youtube-play"></i></a>
+                    <a href="#"><i class="fa fa-envelope-o"></i></a>
                 </div>
             </div>
+            <div class="footer__copyright">
+                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
         </div>
     </footer>
     <!-- Footer Section End -->
