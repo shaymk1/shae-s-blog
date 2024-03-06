@@ -1,0 +1,31 @@
+{% load static %}
+{% block content %}
+  <!-- header -->
+  <header>
+    <nav class = "navbar">
+      <div class = "container">
+        <a href = "index.html" class = "navbar-brand">
+            <img src="{% static "images/logo-vertical.svg" %}" alt="my-logo" >
+        </a>
+        <div class = "navbar-nav">
+          <a href = "index.html">home</a>
+          <a href = "articles.html">articles</a>
+          <a href = "">about</a>
+          <ion-icon name="search"></ion-icon>
+        </div>
+      </div>
+    </nav>
+    <div class = "banner">
+      <div class = "container">
+        <h1 class = "banner-title">
+          <span>Shae's.</span> Blog
+        </h1>
+        <p>eI am stillness!</p>
+      </div>
+    </div>
+  </header>
+  <!-- end of header -->
+  
+  <!-- end of header -->
+  
+{% endblock content %}
