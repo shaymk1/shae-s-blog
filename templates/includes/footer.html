@@ -1,14 +1,26 @@
 {% load static %}
 {% block content %}
 
+
+
+
+
+
+
+
 <!-- footer -->
-<footer>
+ <footer>
+ 
     <div class = "social-links">
-      
+      <div class="footer-logo">
+        <a href="" ><img src="{% static "images/icon-red.svg" %}"   alt="" ></a>
+      </div>
       <a href = "#"><ion-icon name="logo-instagram"></ion-icon></a>
       <a href = "#"><ion-icon name="logo-github"></ion-icon></a>
-    </div>
-    <span><img src="{% static "images/icon-red.svg" %}" alt="" ></span>
-  </footer>
+      <a href=""><ion-icon name="logo-linkedin"></ion-icon></a>
+      
+  </div>
+    <span><small>&copy Shae Kekae 2024</small></span>
+  </footer> 
 
   {% endblock content %}
