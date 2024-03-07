@@ -1,12 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from category.models import Category
 from django.urls import reverse
-
-
-# class Author(models.Model):
-#     user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
-#     first_name = models.CharField(max_length=200, blank=True, null=True)
-#     last_name = models.CharField(max_length=200, blank=True, null=True)
 
 
 class Post (models.Model):
@@ -17,7 +12,7 @@ class Post (models.Model):
         upload_to="articles", 
         default="img/placeholder.svg")
     date_created = models.DateTimeField(auto_now_add=True, editable=False)
-    Category = models.CharField(max_length=250)
+    Category = models.ForeignKey(Category, on_delete=models.CASCADE)
     sub_title = models.CharField(max_length=250)
     title = models.CharField(max_length=250)
     author = models.ForeignKey(
