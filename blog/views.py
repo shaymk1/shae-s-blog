@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from category.models import Category
-from .models import Post
+from .models import Post  
 from django.db.models import Q
 
 
@@ -13,7 +13,7 @@ def home(request, category_slug=None):
         post = Post.objects.filter(category=categories)
 
     else:
-        post = Post.objects.all()
+        post = Post.articlemanager.filter(status='published')
     # get query from request
     query = request.GET.get("query")
     # print(query)
@@ -22,10 +22,10 @@ def home(request, category_slug=None):
         query = ""
 
     # search for query in headline, sub headline, body
-    articles = Post.objects.filter(
+    articles = Post.articlemanager.filter(
         Q(title__icontains=query)
         | Q(sub_title__icontains=query)
-        | Q(image__icontains=query)
+        | Q(content__icontains=query)
         # | Q(body__icontains=query)
     )
 

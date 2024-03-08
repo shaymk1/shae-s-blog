@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post
+from .models import Post, Profile
 
 
 class PostAdmin(admin.ModelAdmin):
@@ -11,13 +11,11 @@ class PostAdmin(admin.ModelAdmin):
         "author",
         "date_created",
     )
-    list_filter = (
-        "author",
-        "title",
-        "category"
-    )
-    prepopulated_fields = {"slug": ("title",), }
-    # prepopulated_fields = {'slug': ('title',), }
+    list_filter = ("author", "title", "category")
+    prepopulated_fields = {
+        "slug": ("title",),
+    }
 
 
 admin.site.register(Post)
+admin.site.register(Profile)
