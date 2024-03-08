@@ -29,8 +29,6 @@ class Post(models.Model):
     options = (
         ("draft", "Draft"),
         ("published", "Published"),
-        
-        
     )
     title = models.CharField(max_length=250)
     sub_title = models.CharField(max_length=250)
@@ -41,15 +39,13 @@ class Post(models.Model):
     date_created = models.DateTimeField(auto_now_add=True, editable=False)
     Category = models.ForeignKey(Category, on_delete=models.CASCADE)
     author = models.ForeignKey(
-        Profile, 
-        on_delete=models.CASCADE, 
-        related_name="post_author",
-        default="author"
+        Profile, on_delete=models.CASCADE, related_name="post_author", default="author"
     )
     time_required_to_read = models.CharField(max_length=250, default="2 Min Read")
     is_admin = models.BooleanField(default=False)
     status = models.CharField(max_length=10, choices=options, default="draft")
-    content = models.TextField(default='')
+    content = models.TextField(default="")
+    featured = models.BooleanField(default=False)
 
     articlemanager = ArticleManager()  # custom manager
 
