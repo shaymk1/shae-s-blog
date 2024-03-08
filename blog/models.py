@@ -29,13 +29,12 @@ class Post(models.Model):
     options = (
         ("draft", "Draft"),
         ("published", "Published"),
-        ("admin", "admin"),
-        ("author", "author")
+        
         
     )
     title = models.CharField(max_length=250)
     sub_title = models.CharField(max_length=250)
-    slug = models.SlugField(max_length=250, unique_for_date="publish")
+    slug = models.SlugField(max_length=250, unique=True)
     image = models.ImageField(
         null=True, blank=True, upload_to="articles", default="img/placeholder.svg"
     )
