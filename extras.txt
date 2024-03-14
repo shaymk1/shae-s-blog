@@ -210,3 +210,141 @@ home.html
                                     <li><a href="#">Vegan <span>63</span></a></li>
                                     {% comment %} category-6 {% endcomment %}
                                     <li><a href="#">Weightloss <span>27</span></a></li>
+
+
+
+
+    <!-- Hero Section Begin -->
+    <section class="hero">
+        <div class="hero__slider owl-carousel">
+            {% comment %} item-1 {% endcomment %}
+            <div class="hero__item">
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-lg-6 p-0">
+                            <div class="hero__inside__item hero__inside__item--wide set-bg"
+                          
+                                data-setbg="{% static "img/posts/blog-1.png" %}">
+                                <div class="hero__inside__item__text">
+                                    <div class="hero__inside__item--meta">
+                                        <span>08</span>
+                                        <p>Aug</p>
+                                    </div>
+                                    <div class="hero__inside__item--text">
+                                        <ul class="label">
+                                            <li>Vegan</li>
+                                            <li>Desserts</li>
+                                        </ul>
+                                        <h4>Vegan White Peach Mug Cobbler With CardamomVegan<br /> White Peach Mug
+                                            Cobbler With Cardamom</h4>
+                                        <ul class="widget">
+                                            <li>by <span>Admin</span></li>
+                                            <li>3 min read</li>
+                                            <li>20 Comment</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6  p-0">
+                            <div class="hero__inside__item hero__inside__item--small set-bg"
+                                data-setbg="{% static "img/posts/blog-2.png" %}">
+                                <div class="hero__inside__item__text">
+                                    <div class="hero__inside__item--meta">
+                                        <span>08</span>
+                                        <p>Aug</p>
+                                    </div>
+                                    <div class="hero__inside__item--text">
+                                        <ul class="label">
+                                            <li>Vegan</li>
+                                            <li>Desserts</li>
+                                        </ul>
+                                        <h5>How to Make a Milkshake With Any <br />Ice Cream, Any Toppings...</h5>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="hero__inside__item hero__inside__item--small set-bg"
+                                data-setbg="{% static "img/posts/blog-3.png" %}">
+                                <div class="hero__inside__item__text">
+                                    <div class="hero__inside__item--meta">
+                                        <span>08</span>
+                                        <p>Aug</p>
+                                    </div>
+                                    <div class="hero__inside__item--text">
+                                        <ul class="label">
+                                            <li>Vegan</li>
+                                            <li>Desserts</li>
+                                        </ul>
+                                        <h5>Vintage Copper Preserve Pan with <br />Brass Handles, Mid 19th Century</h5>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        
+                        <div class="col-lg-3 col-md-6  p-0">
+                            <div class="hero__inside__item set-bg" data-setbg="{% static "img/posts/blog-4.png" %}">
+                                <div class="hero__inside__item__text">
+                                    <div class="hero__inside__item--meta">
+                                        <span>08</span>
+                                        <p>Aug</p>
+                                    </div>
+                                    <div class="hero__inside__item--text">
+                                        <ul class="label">
+                                            <li>Vegan</li>
+                                            <li>Desserts</li>
+                                        </ul>
+                                        <h5>Marinated Lentil Salad with Zucch <br />ini and Tomatoes</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            {% comment %} item-2 {% endcomment %}
+            <div class="hero__item">
+                <div class="container-fluid">
+                    <div class="row">
+                        {% for post in posts %}
+                        <div class="col-lg-6 p-0">
+                            <div class="hero__inside__item hero__inside__item--wide set-bg"
+                                data-setbg="{{post.image.url}}">
+                                <div class="hero__inside__item__text">
+                                    <div class="hero__inside__item--meta">
+                                        <span>08</span>
+                                        <p><span>Aug</span></p>
+                                    </div>
+                                    <div class="hero__inside__item--text">
+                                        <ul class="label">
+                                            <li>{{post.sub_title}}</li>
+                                            <li>{{post.category}}</li>
+                                        </ul>
+                                        <h4>{{post.title}}</h4>
+                                        <ul class="widget">
+                                            <li>by <span>{{post.author}}</span></li>
+                                            <h4>08</h4>
+                                            <span>Aug</span>
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                       
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->

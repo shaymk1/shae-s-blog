@@ -18,6 +18,19 @@ def home(request, category_slug=None):
 
     # to get category-list
     category = Category.objects.all()
+
+    featured = Post.articlemanager.filter(featured=True)[0:4]
+
+    context = {
+        "posts": posts,
+        "featured": featured,
+        "category": category,
+    }
+
+    return render(request, "blog/home.html", context)
+
+
+def posts(request):
     # get query from request
     query = request.GET.get("query")
     # Set query to '' if None
@@ -29,16 +42,23 @@ def home(request, category_slug=None):
         Q(title__icontains=query)
         | Q(sub_title__icontains=query)
         | Q(content__icontains=query)
-        # | Q(body__icontains=query)
     )
 
-    featured = Post.articlemanager.filter(featured=True)[0:4]
-
     context = {
-        "posts": posts,
         "articles": articles,
-        "featured": featured,
-        "category": category,
     }
 
-    return render(request, "blog/home.html", context)
+    return render(request, "posts/main.html", context)
+
+
+def single_post(request, post):
+
+    article = get_object_or_404(Post, slug=post, status="published")
+
+    context = {"article": article}
+
+    return render(request, "posts/single-post.html", context)
+
+
+def about(request):
+    return render(request, "about/about.html")

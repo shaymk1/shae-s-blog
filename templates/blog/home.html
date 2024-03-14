@@ -3,140 +3,7 @@
 {% block content %}
 
 
-    <!-- Hero Section Begin -->
-    <section class="hero">
-        <div class="hero__slider owl-carousel">
-            {% comment %} item-1 {% endcomment %}
-            <div class="hero__item">
-                <div class="container-fluid">
 
-                    <div class="row">
-                        <div class="col-lg-6 p-0">
-                            <div class="hero__inside__item hero__inside__item--wide set-bg"
-                          
-                                data-setbg="{% static "img/posts/blog-1.png" %}">
-                                <div class="hero__inside__item__text">
-                                    <div class="hero__inside__item--meta">
-                                        <span>08</span>
-                                        <p>Aug</p>
-                                    </div>
-                                    <div class="hero__inside__item--text">
-                                        <ul class="label">
-                                            <li>Vegan</li>
-                                            <li>Desserts</li>
-                                        </ul>
-                                        <h4>Vegan White Peach Mug Cobbler With CardamomVegan<br /> White Peach Mug
-                                            Cobbler With Cardamom</h4>
-                                        <ul class="widget">
-                                            <li>by <span>Admin</span></li>
-                                            <li>3 min read</li>
-                                            <li>20 Comment</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6  p-0">
-                            <div class="hero__inside__item hero__inside__item--small set-bg"
-                                data-setbg="{% static "img/posts/blog-2.png" %}">
-                                <div class="hero__inside__item__text">
-                                    <div class="hero__inside__item--meta">
-                                        <span>08</span>
-                                        <p>Aug</p>
-                                    </div>
-                                    <div class="hero__inside__item--text">
-                                        <ul class="label">
-                                            <li>Vegan</li>
-                                            <li>Desserts</li>
-                                        </ul>
-                                        <h5>How to Make a Milkshake With Any <br />Ice Cream, Any Toppings...</h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="hero__inside__item hero__inside__item--small set-bg"
-                                data-setbg="{% static "img/posts/blog-3.png" %}">
-                                <div class="hero__inside__item__text">
-                                    <div class="hero__inside__item--meta">
-                                        <span>08</span>
-                                        <p>Aug</p>
-                                    </div>
-                                    <div class="hero__inside__item--text">
-                                        <ul class="label">
-                                            <li>Vegan</li>
-                                            <li>Desserts</li>
-                                        </ul>
-                                        <h5>Vintage Copper Preserve Pan with <br />Brass Handles, Mid 19th Century</h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        
-                        <div class="col-lg-3 col-md-6  p-0">
-                            <div class="hero__inside__item set-bg" data-setbg="{% static "img/posts/blog-4.png" %}">
-                                <div class="hero__inside__item__text">
-                                    <div class="hero__inside__item--meta">
-                                        <span>08</span>
-                                        <p>Aug</p>
-                                    </div>
-                                    <div class="hero__inside__item--text">
-                                        <ul class="label">
-                                            <li>Vegan</li>
-                                            <li>Desserts</li>
-                                        </ul>
-                                        <h5>Marinated Lentil Salad with Zucch <br />ini and Tomatoes</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-            {% comment %} item-2 {% endcomment %}
-            <div class="hero__item">
-                <div class="container-fluid">
-                    <div class="row">
-                        {% for post in posts %}
-                        <div class="col-lg-6 p-0">
-                            <div class="hero__inside__item hero__inside__item--wide set-bg"
-                                data-setbg="{{post.image.url}}">
-                                <div class="hero__inside__item__text">
-                                    <div class="hero__inside__item--meta">
-                                        <span>08</span>
-                                        <p><span>Aug</span></p>
-                                    </div>
-                                    <div class="hero__inside__item--text">
-                                        <ul class="label">
-                                            <li>{{post.sub_title}}</li>
-                                            <li>{{post.category}}</li>
-                                        </ul>
-                                        <h4>{{post.title}}</h4>
-                                        <ul class="widget">
-                                            <li>by <span>{{post.author}}</span></li>
-                                            <h4>08</h4>
-                                            <span>Aug</span>
-                                            
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {% endfor %}
-                       
-
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <!-- Hero Section End -->
 
     <!-- Categories Section Begin -->
     <section class="categories spad">
@@ -146,8 +13,8 @@
                 {% for post in posts  %}
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="categories__item set-bg" data-setbg="{{post.image.url}}">
-                        <div class="categories__hover__text">
-                            <h5>{{post.title}}</h5>
+                        <div class="categories__hover__text" >
+                           <a href="{{article.get_absolute_url}}"> <h5>{{post.title}}</h5></a>
                             <p>{{post.sub_title}}</p>
                         </div>
                     </div>
@@ -177,7 +44,7 @@
                                     <li>Python</li>
                                     <li>Back-End</li>
                                 </ul>
-                                <h3><a href="#">The Absolute Best Way To Master Pyhton Backend Perfectly..</a></h3>
+                                <h3><a href="{{article.get_absolute_url}}">The Absolute Best Way To Master Pyhton Backend Perfectly..</a></h3>
                                 <ul class="post__widget">
                                     <li>by <span>Admin</span></li>
                                     <li>3 min read</li>
@@ -188,7 +55,7 @@
                                     ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
                                     reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur
                                     excepteur sint ...</p>
-                                <a href="#" class="primary-btn">Read more</a>
+                                <a href="{{article.get_absolute_url}}" class="primary-btn">Read more</a>
                                 <div class="post__social">
                                     <span>Share</span>
                                     <a href="#"><i class="fa fa-facebook"></i> <span>82</span></a>
@@ -213,7 +80,7 @@
                                     </div>
                                     <div class="categories__post__item__text">
                                         <span class="post__label">{{post.subtitle}}</span>
-                                        <h3><a href="#">{{post.title}}</a></h3>
+                                        <h3><a href="{{article.get_absolute_url}}">{{post.title}}</a></h3>
                                         <ul class="post__widget">
                                             <li>by <span>{{post.author}}</span></li>
                                             <h4>08</h4>
@@ -244,7 +111,7 @@
 
                                     <div class="categories__post__item__text">
                                         <span class="post__label">{{post.sub_title}}</span>
-                                        <h3><a href="#">10 ways to master Django as a beginner!</a>
+                                        <h3><a href="{{article.get_absolute_url}}">10 ways to master Django as a beginner!</a>
                                         </h3>
                                         <ul class="post__widget">
                                             <li>by <span>{{post.author}}</span></li>
@@ -271,7 +138,7 @@
                             </div>
                             <div class="col-lg-12 text-center">
                                 <div class="load__more__btn">
-                                    <a href="#">Load more</a>
+                                    <a href="{{articles.get_absolute_url}}">Load more</a>
                                 </div>
                             </div>
                         </div>
@@ -287,7 +154,7 @@
                                 <img src="{% static "img/me-png-f2.png" %}" alt="">
                                 <h6>Hi! I,m <span>Shae Kekae.</span></h6>
                                 <p>Welcome to my space where i talk about my coding journey, my love for python and cybersecurity, and well, sometimes my spiritual journey...</p>
-                                <a href="/about.html" class="primary-btn">Read more</a>
+                                <a href="{% url "about" %}%" class="primary-btn">Read more</a>
                             </div>
                             <div class="sidebar__follow__item">
                                 <div class="sidebar__item__title">
@@ -311,7 +178,7 @@
                                     data-setbg="{% static "img/posts/blog-1.png" %}">
                                     <div class="sidebar__feature__item__large--text">
                                         <span>Pyhton</span>
-                                        <h5><a href="#">Best Python libraries you need to know...</a></h5>
+                                        <h5><a href="{{article.get_absolute_url}}">Best Python libraries you need to know...</a></h5>
                                     </div>
                                 </div>
 
@@ -326,7 +193,7 @@
                                         </div>
                                         <div class="post__text">
                                             <span>{{features.sub_title}}</span>
-                                            <h5><a href="#">{{features.title}}</a></h5>
+                                            <h5><a href="{{article.get_absolute_url}}">{{features.title}}</a></h5>
                                         </div>
                                     </div>
                                     {% endfor %}
@@ -346,8 +213,8 @@
                                     <h6>Categories</h6>
                                 </div>
                                 <ul>
-                                    {% for category in  category %}
-                                    <li><a href="#">{{category.category_name}} <span>128</span></a></li>
+                                    {% for category in  links %}
+                                    <li><a href="{{article.get_absolute_url}}">{{category.category_name}} <span>128</span></a></li>
                                 {% endfor %}
                                     
                              

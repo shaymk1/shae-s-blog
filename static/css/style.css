@@ -997,12 +997,14 @@ ol {
 	-webkit-transition: all, 0.3s;
 	-o-transition: all, 0.3s;
 	transition: all, 0.3s;
+	cursor: pointer;
 }
 
-.categories__item .categories__hover__text h5 {
+.categories__item .categories__hover__text a>h5 {
 	font-size: 20px;
 	color: #111111;
 	text-transform: uppercase;
+	cursor: pointer;
 }
 
 .categories__item .categories__hover__text p {
