@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.shortcuts import render, get_object_or_404
 from category.models import Category
 from .models import Post
@@ -31,18 +32,8 @@ def home(request, category_slug=None):
 
 
 def posts(request):
-    # get query from request
-    query = request.GET.get("query")
-    # Set query to '' if None
-    if query is None:
-        query = ""
 
-    # search for query in headline, sub headline, body
-    articles = Post.articlemanager.filter(
-        Q(title__icontains=query)
-        | Q(sub_title__icontains=query)
-        | Q(content__icontains=query)
-    )
+    articles = Post.articlemanager.filter(featured=True)[0:4]
 
     context = {
         "articles": articles,
@@ -54,15 +45,27 @@ def posts(request):
 def single_post(request, post):
 
     post = get_object_or_404(Post, slug=post, status="published")
-
     context = {"post": post}
-
     return render(request, "posts/single-post.html", context)
 
 
 def about(request):
-    return render(request, "about/about.html")
+    return render(request, "about/about.html", context)
 
 
 def contact(request):
     return render(request, "contact/contact.html")
+
+
+# get query from request
+# query = request.GET.get("query")
+# Set query to '' if None
+# if query is None:
+#     query = ""
+
+# search for query in headline, sub headline, body
+# articles = Post.articlemanager.filter(
+#     Q(title__icontains=query)
+#     | Q(sub_title__icontains=query)
+#     | Q(content__icontains=query)
+# )

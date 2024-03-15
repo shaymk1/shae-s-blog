@@ -9,7 +9,7 @@
                     <div class="row">
                         <div class="col-lg-8 col-md-8">
                             <div class="breadcrumb__text">
-                                <h2>Categories: <span>Recipes</span></h2>
+                                <h2>All Articles:</h2>
                                 <div class="breadcrumb__option">
                                     <a href="{% url "blog:home" %}">Home</a>
                                     {% for category in  links %}
@@ -89,7 +89,7 @@
                                 </div>
                                 <div class="sidebar__feature__item">
                                     <div class="sidebar__item__title">
-                                        <h6>Feature Posts</h6>
+                                        <h6>Featured Posts</h6>
                                     </div>
                                     <div class="sidebar__feature__item__large set-bg"
                                         data-setbg="{% static "img/posts/blog-4.png" %}">
@@ -116,8 +116,9 @@
                                         {% endfor %}
                                     </div>
                                 </div>
+
+                                <br>
                                 <div class="sidebar__item__banner">
-                                    
                                     <img src="{% static "img/posts/blog-3.png" %}" alt="">
                                 </div>
                                 <div class="sidebar__item__categories">
