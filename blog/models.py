@@ -41,6 +41,9 @@ class Post(models.Model):
     author = models.ForeignKey(
         Profile, on_delete=models.CASCADE, related_name="post_author", default="author"
     )
+    author_image = models.ImageField(
+        null=True, blank=True, upload_to="author_images", default="img/placeholder.svg"
+    )
     time_required_to_read = models.CharField(max_length=250, default="2 Min Read")
     is_admin = models.BooleanField(default=False)
     status = models.CharField(max_length=10, choices=options, default="draft")
@@ -58,4 +61,7 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse("post", kwargs={"slug": self.slug})
+        return reverse("blog:post", args=[self.slug])
+
+    # def get_absolute_url(self):
+    #     return reverse('blog:article', args=[self.slug])

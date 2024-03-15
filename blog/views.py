@@ -53,12 +53,13 @@ def posts(request):
 
 def single_post(request, post):
 
-    article = get_object_or_404(Post, slug=post, status="published")
+    post = get_object_or_404(Post, slug=post, status="published")
+   
 
-    context = {"article": article}
+    context = {"post": post}
 
     return render(request, "posts/single-post.html", context)
 
 
-def about(request):
-    return render(request, "about/about.html")
+# def about(request):
+#     return render(request, "about/about.html")

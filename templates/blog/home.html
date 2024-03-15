@@ -14,8 +14,8 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="categories__item set-bg" data-setbg="{{post.image.url}}">
                         <div class="categories__hover__text" >
-                           <a href="{{article.get_absolute_url}}"> <h5>{{post.title}}</h5></a>
-                            <p>{{post.sub_title}}</p>
+                           <a href="{{post.get_absolute_url}}"> <h5>{{post.title}}</h5></a>
+                           <a href="{{post.get_absolute_url}}"><p>{{post.sub_title}}</p></a> 
                         </div>
                     </div>
                 </div>
@@ -44,18 +44,14 @@
                                     <li>Python</li>
                                     <li>Back-End</li>
                                 </ul>
-                                <h3><a href="{{article.get_absolute_url}}">The Absolute Best Way To Master Pyhton Backend Perfectly..</a></h3>
+                                <h3><a href="{{post.get_absolute_url}}">The Absolute Best Way To Master Pyhton Backend Perfectly..</a></h3>
                                 <ul class="post__widget">
                                     <li>by <span>Admin</span></li>
                                     <li>3 min read</li>
                                     {% comment %} <li>20 Comment</li> {% endcomment %}
                                 </ul>
-                                <p>Dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur
-                                    excepteur sint ...</p>
-                                <a href="{{article.get_absolute_url}}" class="primary-btn">Read more</a>
+                                <p>{{post.content}} ...</p>
+                                <a href="{{post.get_absolute_url}}" class="primary-btn">Read more</a>
                                 <div class="post__social">
                                     <span>Share</span>
                                     <a href="#"><i class="fa fa-facebook"></i> <span>82</span></a>
@@ -80,7 +76,7 @@
                                     </div>
                                     <div class="categories__post__item__text">
                                         <span class="post__label">{{post.subtitle}}</span>
-                                        <h3><a href="{{article.get_absolute_url}}">{{post.title}}</a></h3>
+                                        <h3><a href="{{post.get_absolute_url}}">{{post.title}}</a></h3>
                                         <ul class="post__widget">
                                             <li>by <span>{{post.author}}</span></li>
                                             <h4>08</h4>
@@ -111,7 +107,7 @@
 
                                     <div class="categories__post__item__text">
                                         <span class="post__label">{{post.sub_title}}</span>
-                                        <h3><a href="{{article.get_absolute_url}}">10 ways to master Django as a beginner!</a>
+                                        <h3><a href="{{post.get_absolute_url}}">10 ways to master Django as a beginner!</a>
                                         </h3>
                                         <ul class="post__widget">
                                             <li>by <span>{{post.author}}</span></li>
@@ -154,7 +150,8 @@
                                 <img src="{% static "img/me-png-f2.png" %}" alt="">
                                 <h6>Hi! I,m <span>Shae Kekae.</span></h6>
                                 <p>Welcome to my space where i talk about my coding journey, my love for python and cybersecurity, and well, sometimes my spiritual journey...</p>
-                                <a href="{% url "about" %}%" class="primary-btn">Read more</a>
+                                {% comment %} {% url "about" %} {% endcomment %}
+                                <a href="#" class="primary-btn">Read more</a>
                             </div>
                             <div class="sidebar__follow__item">
                                 <div class="sidebar__item__title">
@@ -178,7 +175,7 @@
                                     data-setbg="{% static "img/posts/blog-1.png" %}">
                                     <div class="sidebar__feature__item__large--text">
                                         <span>Pyhton</span>
-                                        <h5><a href="{{article.get_absolute_url}}">Best Python libraries you need to know...</a></h5>
+                                        <h5><a href="{{post.get_absolute_url}}">Best Python libraries you need to know...</a></h5>
                                     </div>
                                 </div>
 
@@ -193,7 +190,7 @@
                                         </div>
                                         <div class="post__text">
                                             <span>{{features.sub_title}}</span>
-                                            <h5><a href="{{article.get_absolute_url}}">{{features.title}}</a></h5>
+                                            <h5><a href="{{post.get_absolute_url}}">{{features.title}}</a></h5>
                                         </div>
                                     </div>
                                     {% endfor %}
@@ -214,7 +211,7 @@
                                 </div>
                                 <ul>
                                     {% for category in  links %}
-                                    <li><a href="{{article.get_absolute_url}}">{{category.category_name}} <span>128</span></a></li>
+                                    <li><a href="{{post.get_absolute_url}}">{{category.category_name}} <span>128</span></a></li>
                                 {% endfor %}
                                     
                              

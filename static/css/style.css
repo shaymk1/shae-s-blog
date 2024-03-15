@@ -1000,7 +1000,7 @@ ol {
 	cursor: pointer;
 }
 
-.categories__item .categories__hover__text a>h5 {
+.categories__item .categories__hover__text a>h5 , a>p{
 	font-size: 20px;
 	color: #111111;
 	text-transform: uppercase;
