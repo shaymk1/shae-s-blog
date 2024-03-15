@@ -1365,6 +1365,8 @@ ol {
 	position: relative;
 }
 
+
+
 .breadcrumb__text .breadcrumb__option a:after {
 	position: absolute;
 	right: -12px;
@@ -1376,6 +1378,10 @@ ol {
 	font-size: 16px;
 	color: #888888;
 }
+
+.breadcrumb__text .breadcrumb__option   span:hover{
+	background:#222222;
+	}
 
 /*---------------------
   Categories Grid

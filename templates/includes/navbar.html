@@ -10,20 +10,8 @@
     </div>
     <nav class="humberger__menu__nav mobile-menu">
         <ul>
-            <li><a href="{% url "blog:home" %}">Home</a></li>
-            <li><a href="#">Python</a></li>
-            <li><a href="#">Cybersecurity</a></li>
-            <li><a href="#">Coding</a></li>
-            <li class="dropdown"><a href="{% url "blog:articles" %}">All Articles</a>
-                <ul class="dropdown__menu">
-                    <li><a href="./categories-grid.html">Categories Grid</a></li>
-                    <li><a href="./categories-list.html">Categories List</a></li>
-                    <li><a href="./single-post.html">Single Post</a></li>
-                    <li><a href="./signin.html">Sign In</a></li>
-                    <li><a href="./404.html">404</a></li>
-                    <li><a href="./typography.html">Typography</a></li>
-                </ul>
-            </li>
+            <li><a href=" {% url "blog:home" %}">Home</a></li>
+            <li><a href="{% url "blog:articles" %}">All Articles</a></li>
             <li><a href="{% url "blog:about" %}">About</a></li>
             <li><a href="{% url "blog:contact" %}">Contact</a></li>
         </ul>
@@ -61,77 +49,11 @@
                 <div class="col-lg-8 col-md-10 order-md-2 order-3">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="./index.html">Home</a></li>
-                            <li><a href="#">Python</a>
-                                <div class="header__megamenu__wrapper">
-                                    <div class="header__megamenu">
-                                        <div class="header__megamenu__item">
-                                            <div class="header__megamenu__item--pic set-bg"
-                                                data-setbg="{% static "img/megamenu/p-1.jpg" %}">
-                                                <div class="label">Cybersecurity</div>
-                                            </div>
-                                            <div class="header__megamenu__item--text">
-                                                <h5><a href="#">How to Make a Milkshake With Any Ice Cream ...</a>
-                                                </h5>
-                                            </div>
-                                        </div>
-                                        <div class="header__megamenu__item">
-                                            <div class="header__megamenu__item--pic set-bg"
-                                                data-setbg="{% static "img/megamenu/p-2.jpg" %}">
-                                                <div class="label">Vegan</div>
-                                            </div>
-                                            <div class="header__megamenu__item--text">
-                                                <h5><a href="#">How to Make a Milkshake With Any Ice Cream ...</a>
-                                                </h5>
-                                            </div>
-                                        </div>
-                                        <div class="header__megamenu__item">
-                                            <div class="header__megamenu__item--pic set-bg"
-                                                data-setbg="{% static "img/megamenu/p-3.jpg" %}">
-                                                <div class="label">Vegan</div>
-                                            </div>
-                                            <div class="header__megamenu__item--text">
-                                                <h5><a href="#">How to Make a Milkshake With Any Ice Cream ...</a>
-                                                </h5>
-                                            </div>
-                                        </div>
-                                        <div class="header__megamenu__item">
-                                            <div class="header__megamenu__item--pic set-bg"
-                                                data-setbg="{% static "img/megamenu/p-4.jpg" %}">
-                                                <div class="label">Vegan</div>
-                                            </div>
-                                            <div class="header__megamenu__item--text">
-                                                <h5><a href="#">How to Make a Milkshake With Any Ice Cream ...</a>
-                                                </h5>
-                                            </div>
-                                        </div>
-                                        <div class="header__megamenu__item">
-                                            <div class="header__megamenu__item--pic set-bg"
-                                                data-setbg="{% static "img/megamenu/p-5.jpg" %}">
-                                                <div class="label">Vegan</div>
-                                            </div>
-                                            <div class="header__megamenu__item--text">
-                                                <h5><a href="#">How to Make a Milkshake With Any Ice Cream ...</a>
-                                                </h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li><a href="#">Cybersecurity</a></li>
-                            <li><a href="#">All Articles</a></li>
-                            <li class="dropdown"><a href="#"></a>
-                                <ul class="dropdown__menu">
-                                    <li><a href="./categories-grid.html">Categories Grid</a></li>
-                                    <li><a href="./categories-list.html">Categories List</a></li>
-                                    <li><a href="./single-post.html">Single Post</a></li>
-                                    <li><a href="./signin.html">Sign In</a></li>
-                                    <li><a href="./404.html">404</a></li>
-                                    <li><a href="./typography.html">Typography</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="./about.html">About</a></li>
-                            <li><a href="./contact.html">Contact</a></li>
+                            <li><a href=" {% url "blog:home" %}">Home</a></li>
+                            <li><a href="{% url "blog:articles" %}">All Articles</a></li>
+                            <li><a href="{% url "blog:about" %}">About</a></li>
+                            <li><a href="{% url "blog:contact" %}">Contact</a></li>
+                          
                         </ul>
                     </nav>
                 </div>
@@ -152,7 +74,7 @@
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="header__logo">
-                    <a href="./index.html"><img src="{% static "img/logo-vertical.svg" %}" alt=""></a>
+                    <a href="{% url "blog:home" %}"><img src="{% static "img/logo-vertical.svg" %}" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3">
