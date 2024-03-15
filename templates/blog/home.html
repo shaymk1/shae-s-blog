@@ -150,8 +150,8 @@
                                 <img src="{% static "img/me-png-f2.png" %}" alt="">
                                 <h6>Hi! I,m <span>Shae Kekae.</span></h6>
                                 <p>Welcome to my space where i talk about my coding journey, my love for python and cybersecurity, and well, sometimes my spiritual journey...</p>
-                                {% comment %} {% url "about" %} {% endcomment %}
-                                <a href="#" class="primary-btn">Read more</a>
+                               
+                                <a href="{% url "blog:about" %}" class="primary-btn">Read more</a>
                             </div>
                             <div class="sidebar__follow__item">
                                 <div class="sidebar__item__title">

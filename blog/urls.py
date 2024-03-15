@@ -6,5 +6,6 @@ urlpatterns = [
     path("", views.home, name="home"),
     path("articles/", views.posts, name="articles"),
     path("<slug:post>/", views.single_post, name="post"),
-    # path("about/", views.about, name="about"),
+    path("about/", views.posts, name="about"),
+    path("contact/", views.contact, name="contact"),
 ]
