@@ -38,7 +38,7 @@
                                     <div class="col-lg-6 col-md-6">
                                         <div class="categories__post__item__text">
                                             <span class="post__label">{{article.sub_title}}</span>
-                                            <h3><a href="#">{{article.title}}</a></h3>
+                                            <h3><a href="{{post.get_absolute_url}}">{{article.title}}</a></h3>
                                             <ul class="post__widget">
                                                 <li>by <span>{{article.author}}</span></li>
                                                 <li>{{article.time_required_to_read}}</li>
@@ -95,7 +95,7 @@
                                         data-setbg="{% static "img/posts/blog-4.png" %}">
                                         <div class="sidebar__feature__item__large--text">
                                             <span>Django</span>
-                                            <h5><a href="#">How to create a blog using Django</a>
+                                            <h5><a href="{{article.get_absolute_url}}">How to create a blog using Django</a>
                                             </h5>
                                         </div>
                                     </div>

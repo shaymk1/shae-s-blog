@@ -2,7 +2,8 @@ from multiprocessing import context
 from django.shortcuts import render, get_object_or_404
 from category.models import Category
 from .models import Post
-from django.db.models import Q
+from django.http import Http404
+# from django.db.models import Q
 
 
 def home(request, category_slug=None):
@@ -42,9 +43,13 @@ def posts(request):
     return render(request, "posts/posts.html", context)
 
 
-def single_post(request, post):
+def single_post(request, post):  # post
 
-    post = get_object_or_404(Post, slug=post, status="published")
+    # post = get_object_or_404(Post, slug=post, status="published")
+    try:
+        post = get_object_or_404(Post, slug=post, status="published")
+    except Post.DoesNotExist:
+        raise Http404("No article found.")
     context = {"post": post}
     return render(request, "posts/single-post.html", context)
 
