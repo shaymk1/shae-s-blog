@@ -57,9 +57,17 @@
                         </ul>
                     </nav>
                 </div>
+                {% comment %} search {% endcomment %}
                 <div class="col-lg-2 col-md-1 col-6 order-md-3 order-2">
                     <div class="header__search">
-                        <i class="fa fa-search search-switch"></i>
+                        <form action="" method="get">
+                            <input name="q" type="text" id="query" name="query" placeholder="Search...">
+                         
+                                <i class="fa fa-search search-switch"></i>
+                             
+                            
+                          </form>
+                        
                     </div>
                 </div>
             </div>
