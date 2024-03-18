@@ -59,16 +59,39 @@
                 </div>
                 {% comment %} search {% endcomment %}
                 <div class="col-lg-2 col-md-1 col-6 order-md-3 order-2">
-                    <div class="header__search">
-                        <form action="" method="get">
-                            <input name="q" type="text" id="query" name="query" placeholder="Search...">
-                         
-                                <i class="fa fa-search search-switch"></i>
-                             
-                            
-                          </form>
+                    <form action="{% url "blog:articles" %}" method="Post">
+                        {% csrf_token %}
+                        <div class="form-row align-items-center mb-2 mt-2">
+                          <div class="col-sm-6 my-1">
+                            <label class="sr-only" for="inlineFormInputName">Search</label>
+                            <input type="search" name="searched"  class="form-control me-2"  id="query"  placeholder="search" name="q">
+                          </div>
+                          <div class="col-auto my-1">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                          </div>
+                        </div>
+                      </form>
+                      {% comment %} id="inlineFormInputName" {% endcomment %}
+                    {% comment %} <div class="header__search"> {% endcomment %}
                         
-                    </div>
+                          {% comment %} </form>
+                         <form action="{% url "blog:articles" %}" method="get"> {% endcomment %}
+                        
+                            {% comment %} <input name="q" type="search" id="query"  placeholder="Search...">
+                         
+
+                            <div class="col-auto my-1">
+                                 <button type="submit" class="btn btn-outline-secondary">Search</button>
+                            </div> {% endcomment %}
+                                {% comment %} <button type = "submit" class="btn btn-outline-secondary">
+                                    Search
+                                  </button> {% endcomment %}
+                            
+                          {% comment %} </form>  {% endcomment %}
+{% comment %} 
+                          <i class="fa fa-search search-switch"></i> {% endcomment %}
+                        
+                    {% comment %} </div> {% endcomment %}
                 </div>
             </div>
         </div>

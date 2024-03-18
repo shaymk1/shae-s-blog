@@ -17,39 +17,36 @@ def home(request, category_slug=None):
         posts = Post.objects.filter(category=categories)
 
     else:
-        posts = Post.articlemanager.filter(status="published")[0:4]
+        posts = Post.articlemanager.filter(status="published")[0:3]
 
     # to get category-list
     category = Category.objects.all()
 
-    featured = Post.articlemanager.filter(featured=True)[0:4]
-
-    # get query from request
-    query = request.GET.get("query")
-    # Set query to '' if None
-    if query is None:
-        query = ""
-    # search for query in headline, sub headline, body
-    articles = Post.articlemanager.filter(
-        Q(title__icontains=query)
-        | Q(sub_title__icontains=query)
-        | Q(content__icontains=query)
-    )
+    featured = Post.articlemanager.filter(featured=True)[0:2]
 
     context = {
         "posts": posts,
         "featured": featured,
         "category": category,
-        "articles": articles,
+        # "articles": articles,
     }
 
     return render(request, "blog/home.html", context)
 
 
 def posts(request):
-    ####### pagination#####
-    articles = Post.articlemanager.filter(status="published")[0:4]
-    p = Paginator(articles, 4)  # creating a paginator object
+    # search
+    if request.POST:
+        searched = request.POST["searched"]
+        return render(request, "posts/posts.html", {"searched": searched})
+    else:
+        pass
+    # if request.method == "POST":
+    #     searched = request.POST["searched"]
+
+    # pagination
+    articles = Post.articlemanager.filter(status="published")[0:3]
+    p = Paginator(articles, 3)  # creating a paginator object
     # getting the desired page number from url
     page_number = request.GET.get("page")
     try:
@@ -64,6 +61,7 @@ def posts(request):
     context = {
         "articles": articles,
         "page_obj": page_obj,
+        "searched": searched,
     }
 
     return render(request, "posts/posts.html", context)
@@ -84,3 +82,16 @@ def about(request):
 
 def contact(request):
     return render(request, "contact/contact.html")
+
+
+# get query from request
+# query = request.GET.get("query")
+# Set query to '' if None
+# if query is None:
+#     query = ""
+# search for query in headline, sub headline, body
+# articles = Post.articlemanager.filter(
+#     Q(title__icontains=query)
+#     | Q(sub_title__icontains=query)
+#     | Q(content__icontains=query)
+# )

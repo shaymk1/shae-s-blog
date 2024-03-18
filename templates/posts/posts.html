@@ -9,7 +9,8 @@
                     <div class="row">
                         <div class="col-lg-8 col-md-8">
                             <div class="breadcrumb__text">
-                                <h2>All Articles:</h2>
+                                {% if searched %}
+                                <h2>All Articles: {{searched}}</h2>
                                 <div class="breadcrumb__option">
                                     <a href="{% url "blog:home" %}">Home</a>
                                     {% for category in  links %}
@@ -50,6 +51,10 @@
                                 </div>
                             </div>
                             {% endfor %}
+                            {% else %}
+                            <h2>Sorry, no articles found..</h2>
+                            {% endif %}
+                            
 
 
 {% comment %} pagination {% endcomment %}
